@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | Oxford Coaching Classes</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #8B0000;
+            --secondary: #C41E3A;
+            --accent: #E63946;
+            --blue-accent: #2196F3;
+            --blue-light: #42A5F5;
+            --blue-dark: #1565C0;
+            --dark: #2c3e50;
+            --white: #fff;
+            --shadow: 0 15px 40px rgba(0,0,0,0.1);
+            --radius: 14px;
+            --transition: 0.4s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            padding-top: 76px;
+        }
+        
+        /* Navbar */
+        .navbar-brand {
+            font-weight: 700;
+            color: #C41E3A !important;
+        }
+        
+        .navbar-brand img {
+            height: 52px;
+            object-fit: contain;
+        }
+        
+        .nav-link {
+            color: #0d1440 !important;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--blue-accent) !important;
+        }
+        
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blue-accent);
+            transition: 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-apply {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            transition: var(--transition);
+        }
+        
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Hero Section */
+        .courses-hero {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: -76px;
+        }
+        
+        .courses-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url('corse.JPG');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .btn-hero {
+            background: white;
+            color: var(--accent);
+            padding: 14px 36px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Section Titles */
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #777;
+        }
+        
+        /* Course Cards */
+        .course-card {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            overflow: hidden;
+            border-top: 5px solid var(--blue-accent);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(33, 150, 243, 0.15);
+        }
+        
+        .course-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            transition: var(--transition);
+            background: linear-gradient(135deg, var(--blue-accent), var(--blue-dark));
+            overflow: hidden;
+        }
+        
+        .course-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .course-card:hover .course-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+        
+        .course-features {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .course-features li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            color: #555;
+        }
+        
+        .course-features li i {
+            color: var(--blue-accent);
+            margin-right: 10px;
+        }
+        
+        .course-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, var(--blue-accent), var(--blue-dark));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .course-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(33, 150, 243, 0.3);
+            color: white;
+        }
+        
+        /* Exam Details */
+        .detail-box {
+            background: #fff;
+            padding: 35px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            height: 100%;
+            transition: var(--transition);
+        }
+        
+        .detail-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .detail-box i {
+            font-size: 36px;
+            color: var(--blue-accent);
+            margin-bottom: 20px;
+        }
+        
+        .detail-box ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        
+        .detail-box ul li {
+            padding: 8px 0;
+            color: #555;
+            position: relative;
+        }
+        
+        .detail-box ul li::before {
+            content: "✓";
+            color: var(--blue-accent);
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
+        }
+        
+       
+      
+        
+        /* Footer */
+        .site-footer {
+            background: #0b0b0b;
+            color: white;
+        }
+        
+        .footer-contact a {
+            color: #ccc;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-contact a:hover {
+            color: var(--blue-accent);
+            transform: translateX(5px);
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--blue-accent);
+            padding-left: 6px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icons a:hover {
+            background: var(--blue-accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Map Container */
+        .map-container {
+            width: 100%;
+            height: 200px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .courses-hero {
+                height: 60vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .course-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo.jpg" alt="Oxford Coaching Classes Logo" class="me-2">
+                <span>OXFORD COACHING CLASSES</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#courses-hero">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="facilities.html">Facilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="results.html">Results</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a href="index.html#apply" class="btn btn-apply">Apply Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Courses Hero -->
+    <section class="courses-hero" id="courses-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="mb-4">Specialized Coaching Programs</h1>
+                <p class="mb-4 fs-5">Comprehensive preparation for Navodaya, Sainik School, RMS & Residential School entrance exams</p>
+                <a href="index.html#apply" class="btn btn-hero">Enroll Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Intro -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4" style="color: var(--primary);">Our Course Structure</h2>
+                    <p class="fs-5">We offer targeted coaching programs designed specifically for each type of competitive entrance exam. Our curriculum focuses on conceptual understanding, problem-solving skills, and exam strategy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Grid -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="section-title text-center mb-5">
+                <h2>Courses Offered</h2>
+                <p>Specialized coaching for different entrance exams</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Navodaya Vidyalaya -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="course-card animate-on-scroll">
+                        <div class="p-4">
+                            <div class="course-icon">
+                                <!-- Replace with image -->
+                                <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Navodaya">
+                            </div>
+                            <h3 class="text-center mb-3">Navodaya Vidyalaya</h3>
+                            <p class="text-center mb-4">Comprehensive preparation for JNVST entrance exam for classes 6th & 9th</p>
+                            <ul class="course-features mb-4">
+                                <li><i class="fas fa-check-circle"></i> Mental Ability Training</li>
+                                <li><i class="fas fa-check-circle"></i> Arithmetic & Language</li>
+                                <li><i class="fas fa-check-circle"></i> 100+ Mock Tests</li>
+                                <li><i class="fas fa-check-circle"></i> Previous Year Papers</li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="index.html#apply" class="course-btn">Join Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sainik School -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="course-card animate-on-scroll" style="transition-delay: 0.1s;">
+                        <div class="p-4">
+                            <div class="course-icon">
+                                <!-- Replace with image -->
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sainik School">
+                            </div>
+                            <h3 class="text-center mb-3">Sainik School</h3>
+                            <p class="text-center mb-4">AISSEE preparation with focus on academics & physical training</p>
+                            <ul class="course-features mb-4">
+                                <li><i class="fas fa-check-circle"></i> Mathematics & Science</li>
+                                <li><i class="fas fa-check-circle"></i> Language & Social Studies</li>
+                                <li><i class="fas fa-check-circle"></i> Physical Fitness Program</li>
+                                <li><i class="fas fa-check-circle"></i> Interview Preparation</li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="index.html#apply" class="course-btn">Join Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rashtriya Military School -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="course-card animate-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="p-4">
+                            <div class="course-icon">
+                                <!-- Replace with image -->
+                                <img src="https://images.unsplash.com/photo-1545324412-b84c11b7d581?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Military School">
+                            </div>
+                            <h3 class="text-center mb-3">Rashtriya Military School</h3>
+                            <p class="text-center mb-4">RMS entrance exam coaching with discipline training</p>
+                            <ul class="course-features mb-4">
+                                <li><i class="fas fa-check-circle"></i> Full Syllabus Coverage</li>
+                                <li><i class="fas fa-check-circle"></i> Physical Training</li>
+                                <li><i class="fas fa-check-circle"></i> Discipline & Grooming</li>
+                                <li><i class="fas fa-check-circle"></i> Medical Test Prep</li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="index.html#apply" class="course-btn">Join Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Kittur Rani Chennamma -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="course-card animate-on-scroll" style="transition-delay: 0.3s;">
+                        <div class="p-4">
+                            <div class="course-icon">
+                                <!-- Replace with image -->
+                                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Girls School">
+                            </div>
+                            <h3 class="text-center mb-3">Kittur Rani Chennamma</h3>
+                            <p class="text-center mb-4">Residential school entrance preparation</p>
+                            <ul class="course-features mb-4">
+                                <li><i class="fas fa-check-circle"></i> State Syllabus Focus</li>
+                                <li><i class="fas fa-check-circle"></i> Kannada & English</li>
+                                <li><i class="fas fa-check-circle"></i> Physical Education</li>
+                                <li><i class="fas fa-check-circle"></i> Residential Training</li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="index.html#apply" class="course-btn">Join Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Adarsh & Morarji -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="course-card animate-on-scroll" style="transition-delay: 0.4s;">
+                        <div class="p-4">
+                            <div class="course-icon">
+                                <!-- Replace with image -->
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Government School">
+                            </div>
+                            <h3 class="text-center mb-3">Adarsh & Morarji</h3>
+                            <p class="text-center mb-4">Government residential school entrance</p>
+                            <ul class="course-features mb-4">
+                                <li><i class="fas fa-check-circle"></i> NCERT Based</li>
+                                <li><i class="fas fa-check-circle"></i> Regional Language</li>
+                                <li><i class="fas fa-check-circle"></i> Basic Science</li>
+                                <li><i class="fas fa-check-circle"></i> Social Studies</li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="index.html#apply" class="course-btn">Join Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Alike & Muddenahalli -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="course-card animate-on-scroll" style="transition-delay: 0.5s;">
+                        <div class="p-4">
+                            <div class="course-icon">
+                                <!-- Replace with image -->
+                                <img src="https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Value Education">
+                            </div>
+                            <h3 class="text-center mb-3">Alike & Muddenahalli</h3>
+                            <p class="text-center mb-4">Special guidance for value-based education</p>
+                            <ul class="course-features mb-4">
+                                <li><i class="fas fa-check-circle"></i> Holistic Development</li>
+                                <li><i class="fas fa-check-circle"></i> Value Education</li>
+                                <li><i class="fas fa-check-circle"></i> Personality Development</li>
+                                <li><i class="fas fa-check-circle"></i> Creative Learning</li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="index.html#apply" class="course-btn">Join Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exam Details -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="section-title text-center mb-5">
+                <h2>Exam Details</h2>
+                <p>Understanding the entrance examination patterns</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- JNVST Pattern -->
+                <div class="col-lg-4">
+                    <div class="detail-box animate-on-scroll">
+                        <i class="fas fa-file-alt text-center d-block mb-3"></i>
+                        <h3 class="text-center mb-4">JNVST Pattern</h3>
+                        <ul class="mb-0">
+                            <li>Mental Ability Test</li>
+                            <li>Arithmetic Test</li>
+                            <li>Language Test</li>
+                            <li>No negative marking</li>
+                            <li>Class 6: 80 Questions</li>
+                            <li>Duration: 2 hours</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- AISSEE Pattern -->
+                <div class="col-lg-4">
+                    <div class="detail-box animate-on-scroll" style="transition-delay: 0.2s;">
+                        <i class="fas fa-clipboard-check text-center d-block mb-3"></i>
+                        <h3 class="text-center mb-4">AISSEE Pattern</h3>
+                        <ul class="mb-0">
+                            <li>Mathematics: 50 marks</li>
+                            <li>English: 25 marks</li>
+                            <li>Intelligence: 25 marks</li>
+                            <li>General Knowledge: 25 marks</li>
+                            <li>Total: 125 marks</li>
+                            <li>Physical & Medical Tests</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Physical Standards -->
+                <div class="col-lg-4">
+                    <div class="detail-box animate-on-scroll" style="transition-delay: 0.4s;">
+                        <i class="fas fa-running text-center d-block mb-3"></i>
+                        <h3 class="text-center mb-4">Physical Standards</h3>
+                        <ul class="mb-0">
+                            <li>Running (1.6 km)</li>
+                            <li>Push-ups & Sit-ups</li>
+                            <li>Medical Examination</li>
+                            <li>Height & Weight norms</li>
+                            <li>Eyesight requirements</li>
+                            <li>Overall fitness</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+
+  
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h3 class="text-white mb-4">Oxford Coaching</h3>
+                    <p class="text-white-50 mb-4">Transforming young aspirants into confident achievers with focused coaching and mentorship.</p>
+                    
+                    <div class="footer-contact">
+                        <a href="tel:+919741946903" class="mb-3">
+                            <i class="fas fa-phone text-blue-accent"></i> +91 97419 46903
+                        </a>
+                        <a href="https://wa.me/919741946903" target="_blank" class="mb-3">
+                            <i class="fab fa-whatsapp text-blue-accent"></i> WhatsApp Us
+                        </a>
+                        <a href="https://www.google.com/maps?q=Dharwad,+Karnataka" target="_blank" class="mb-3">
+                            <i class="fas fa-map-marker-alt text-blue-accent"></i> Dharwad, Karnataka
+                        </a>
+                    </div>
+                    
+                    <div class="social-icons mt-4">
+                        <a href="https://www.facebook.com" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com" target="_blank" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html" class="d-block mb-2">Home</a>
+                        <a href="#courses-hero" class="d-block mb-2">Courses</a>
+                        <a href="facilities.html" class="d-block mb-2">Facilities</a>
+                        <a href="about.html" class="d-block mb-2">About</a>
+                        <a href="results.html" class="d-block mb-2">Results</a>
+                        <a href="index.html#apply" class="d-block mb-2">Apply</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5">
+                    <h4 class="text-white mb-4">Subscribe & Location</h4>
+                    <p class="text-white-50 mb-4">Get updates about new batches and success stories.</p>
+                    
+                    <form class="subscribe-form mb-4">
+                        <div class="row g-2">
+                            <div class="col-md-8">
+                                <input type="email" class="form-control" placeholder="Email address" required>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-apply w-100">Subscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <h5 class="text-white mb-3">Visit Our Campus</h5>
+                    <div class="map-container">
+                        <!-- Static Map Image or Google Maps Embed -->
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=Dharwad,Karnataka&zoom=14&size=600x300&markers=color:red%7CDharwad,Karnataka&key=YOUR_API_KEY" 
+                             alt="Location Map" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p class="text-white-50 mt-2 mb-0">
+                        <i class="fas fa-map-marker-alt text-blue-accent me-2"></i>
+                        Oxford Coaching Classes, Dharwad, Karnataka, PIN: 580001
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom text-center pt-4">
+                © 2025 Oxford Coaching Classes — All rights reserved
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 76,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        document.querySelector('.subscribe-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing! We will keep you updated.');
+            this.reset();
+        });
+        
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        animateElements.forEach(el => observer.observe(el));
+        
+        // Course card hover effects
+        document.querySelectorAll('.course-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

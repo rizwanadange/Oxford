@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oxford Coaching Classes | Navodaya & Sainik School</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Font Awesome for additional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #aa1313;
+            --secondary: #C41E3A;
+            --accent: #E63946;
+            --text-primary: #1a237e;
+            --text-secondary: #252a57;
+            --text-accent: #ffde56;
+            --dark: #2c3e50;
+            --white: #fff;
+            --shadow: 0 15px 40px rgba(0,0,0,0.1);
+            --radius: 14px;
+            --transition: 0.4s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            padding-top: 76px; /* Adjust for fixed navbar */
+        }
+        
+        .bg-primary-custom {
+            background-color: var(--primary) !important;
+        }
+        
+        .bg-gradient-custom {
+            background: linear-gradient(135deg, var(--secondary), var(--accent)) !important;
+        }
+        
+        .text-accent {
+            color: var(--accent) !important;
+        }
+        
+        /* Navbar */
+        .navbar-brand {
+            font-weight: 700;
+            color: #C41E3A !important;
+        }
+        
+        .navbar-brand img {
+            height: 52px;
+            object-fit: contain;
+        }
+        
+        .nav-link {
+            color: #0d1440 !important;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+        
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-apply {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+        }
+        
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--text-secondary), var(--primary));
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: -76px; /* Offset for navbar */
+        }
+        
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url('founder.JPG');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 1.75rem;
+        }
+        
+        .btn-hero {
+            background: white;
+            color: var(--accent);
+            padding: 14px 36px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Section Titles */
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #777;
+        }
+        
+        /* About Section */
+        .about-image {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .feature-box {
+            padding: 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Courses Cards */
+        .course-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .course-img-container {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .course-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .course-card:hover .course-img-container img {
+            transform: scale(1.1);
+        }
+        
+        .course-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 30px 20px 20px;
+            text-align: center;
+        }
+        
+        /* Facilities Carousel */
+        .facility-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #e0e0e0;
+        }
+        
+        .facility-img {
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .facility-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .facility-card:hover .facility-img img {
+            transform: scale(1.05);
+        }
+        
+        /* Results Stats */
+        .stat-box {
+            padding: 30px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            background: white;
+            height: 100%;
+        }
+        
+        .testimonial-card::before {
+            content: "\201C";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--accent);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        /* Events */
+        .event-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .event-date {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            z-index: 2;
+        }
+        
+        .event-date .day {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .event-date .month {
+            font-size: 0.9rem;
+            display: block;
+        }
+        
+        .event-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+        }
+        
+        /* Form */
+        .apply-form {
+            background: white;
+            padding: 50px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .apply-form .form-control,
+        .apply-form .form-select {
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+        }
+        
+        .apply-form .form-control:focus,
+        .apply-form .form-select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.25rem rgba(230, 57, 70, 0.25);
+        }
+        
+        /* Footer */
+        .site-footer {
+            background: #0b0b0b;
+            color: white;
+            padding-top: 60px;
+        }
+        
+        .footer-contact a {
+            color: #ccc;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-contact a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 6px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 70vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .apply-form {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo.jpg" alt="Oxford Coaching Classes Logo" class="me-2">
+                <span>OXFORD COACHING CLASSES</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="facilities.html">Facilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="results.html">Results</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a href="apply.html" class="btn btn-apply">Apply Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="mb-4">Creating Brains for Nation Building</h1>
+                <p class="mb-4">Top Coaching for Navodaya & Sainik School Aspirants with Proven Results</p>
+                <a href="#apply" class="btn btn-hero">Apply Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Preview -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="section-title text-center mb-5">
+                <h2>Our Courses</h2>
+                <p>Specialized coaching for different entrance exams</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="course-card">
+                        <div class="course-img-container position-relative">
+                            <img src="https://static.wixstatic.com/media/4a2207_1dccdf8caa6c4785aea31a08544ca30f~mv2.jpg/v1/fill/w_1031,h_426,al_c,q_85,enc_auto/4a2207_1dccdf8caa6c4785aea31a08544ca30f~mv2.jpg" alt="Navodaya School">
+                            <div class="course-overlay">
+                                <h4 class="text-white mb-1">Navodaya</h4>
+                                <p class="text-white mb-0">JNVST preparation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="course-card">
+                        <div class="course-img-container position-relative">
+                            <img src="https://th.bing.com/th/id/OIP.laJz_kcWOJ1UIuXkq5GU3AHaE7?rs=1&pid=ImgDetMain" alt="Sainik School">
+                            <div class="course-overlay">
+                                <h4 class="text-white mb-1">Sainik School</h4>
+                                <p class="text-white mb-0">AISSEE coaching</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="course-card">
+                        <div class="course-img-container position-relative">
+                            <img src="https://esmcorner.com/wp-content/uploads/2024/02/esm-corner-rms-1.webp" alt="Military School">
+                            <div class="course-overlay">
+                                <h4 class="text-white mb-1">RMS</h4>
+                                <p class="text-white mb-0">Military school prep</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="course-card">
+                        <div class="course-img-container position-relative">
+                            <img src="https://tse2.mm.bing.net/th/id/OIP.PCv5x_Q2NGyItHEK_KNgmgHaEK?rs=1&pid=ImgDetMain" alt="Girls School">
+                            <div class="course-overlay">
+                                <h4 class="text-white mb-1">Kittur Rani</h4>
+                                <p class="text-white mb-0">Girls residential</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="courses.html" class="btn btn-apply">View All Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="section-title text-center mb-5">
+                <h2>Our Facilities</h2>
+                <p>World-class academic & residential environment</p>
+            </div>
+            
+            <div id="facilitiesCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-4 col-md-6">
+                                <a href="facilities.html" class="text-decoration-none text-dark">
+                                    <div class="facility-card h-100">
+                                        <div class="facility-img">
+                                            <img src="class room.JPG" alt="Smart Classroom" class="w-100">
+                                        </div>
+                                        <div class="p-3">
+                                            <h4>Smart Classrooms</h4>
+                                            <p>Technology-enabled classrooms with digital boards and interactive learning tools.</p>
+                                            <span class="text-primary">View Details →</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-4 col-md-6">
+                                <a href="facilities.html" class="text-decoration-none text-dark">
+                                    <div class="facility-card h-100">
+                                        <div class="facility-img">
+                                            <img src="staff.JPG" alt="Expert Faculty" class="w-100">
+                                        </div>
+                                        <div class="p-3">
+                                            <h4>Expert Faculty</h4>
+                                            <p>Experienced trainers specializing in JNVST & AISSEE exam patterns.</p>
+                                            <span class="text-primary">View Details →</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#facilitiesCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#facilitiesCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section py-5 bg-light">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="oxford.jpeg" alt="Oxford Campus" class="w-100">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mb-4 text-primary">About Oxford Coaching Classes</h2>
+                    <p class="mb-3">Founded with a vision to provide quality coaching for competitive entrance exams, Oxford Coaching Classes has been transforming young aspirants into confident achievers for over 15 years.</p>
+                    <p class="mb-4">We specialize in preparing students for Navodaya Vidyalaya, Sainik Schools, RMS, and other prestigious residential schools across Karnataka.</p>
+                    
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section py-5">
+        <div class="container py-5">
+            <div class="section-title text-center mb-5">
+                <h2>Our Results</h2>
+                <p>Celebrating consistent success stories</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-box">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-text">Total Selections</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-box">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-text">Success Rate</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-box">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-text">Annual Selections</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-box">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-text">Districts Covered</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section py-5 bg-light">
+        <div class="container py-5">
+            <div class="section-title text-center mb-5">
+                <h2>What Our Students Say</h2>
+                <p>Real results, real transformations</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "After joining this institution, I was first taught the basics very clearly. Difficult mathematics topics were explained in a very simple way using tricks, which helped me get selected for Navodaya School. I sincerely thank the Oxford Coaching Centre teachers who worked hard for my success."
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="author-avatar me-3">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Subramanya M. Hiremath</h5>
+                                <span class="text-accent">Jawahar Navodaya Vidyalaya, Uttara Kannada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Initially I was confused about joining this institution, but the homely environment, caring teachers, and personal attention removed all my doubts. Every subject was explained clearly and simply, which helped me achieve my dream of getting into Kittur Rani Chennamma Sainik School."
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="author-avatar me-3">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Basavarajeshwari Patil</h5>
+                                <span class="text-accent">Alumni - Sainik School Bijapur</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-5">
+        <div class="container py-5">
+            <div class="section-title text-center mb-5">
+                <h2>Upcoming Events</h2>
+                <p>Learning beyond classrooms</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="event-card">
+                        <div class="position-relative">
+                            <div class="event-date">
+                                <span class="day">25</span>
+                                <span class="month">Mar</span>
+                            </div>
+                            <div class="event-img"></div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="mb-3">Motivation Seminar</h4>
+                            <div class="d-flex gap-3 mb-3 text-muted">
+                                <span><i class="bi bi-clock me-1"></i> 10:00 AM - 1:00 PM</span>
+                                <span><i class="bi bi-geo-alt me-1"></i> Main Auditorium</span>
+                            </div>
+                            <p class="mb-0">Interactive session for students & parents with alumni and experts.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="event-card">
+                        <div class="position-relative">
+                            <div class="event-date">
+                                <span class="day">12</span>
+                                <span class="month">Apr</span>
+                            </div>
+                            <div class="event-img" style="background: linear-gradient(135deg, #4CAF50, #2196F3) !important;"></div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="mb-3">Physical Training Camp</h4>
+                            <div class="d-flex gap-3 mb-3 text-muted">
+                                <span><i class="bi bi-clock me-1"></i> 6:00 AM - 8:00 AM</span>
+                                <span><i class="bi bi-geo-alt me-1"></i> Sports Ground</span>
+                            </div>
+                            <p class="mb-0">Special training camp focusing on fitness and drills for physical tests.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="event-card">
+                        <div class="position-relative">
+                            <div class="event-date">
+                                <span class="day">05</span>
+                                <span class="month">May</span>
+                            </div>
+                            <div class="event-img" style="background: linear-gradient(135deg, #FF9800, #F44336) !important;"></div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="mb-3">Mock Test Week</h4>
+                            <div class="d-flex gap-3 mb-3 text-muted">
+                                <span><i class="bi bi-clock me-1"></i> 9:00 AM - 12:00 PM</span>
+                                <span><i class="bi bi-geo-alt me-1"></i> Examination Hall</span>
+                            </div>
+                            <p class="mb-0">Full-length mock tests conducted under actual exam conditions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="events.html" class="btn btn-apply">View All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="apply-section py-5 bg-light" id="apply">
+        <div class="container py-5">
+            <div class="section-title text-center mb-5">
+                <h2>Ready to Start?</h2>
+                <p>Begin your journey towards success in competitive exams</p>
+            </div>
+            
+            <div class="text-center">
+                <a href="apply.html" class="btn btn-apply btn-lg px-5 py-3">Apply Now for Admission</a>
+                <p class="mt-3 text-muted">Fill out our application form to get started</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h3 class="text-white mb-4">Oxford Coaching</h3>
+                    <p class="text-white-50 mb-4">Transforming young aspirants into confident achievers with focused coaching and mentorship.</p>
+                    
+                    <div class="footer-contact">
+                        <a href="tel:+919741946903" class="mb-3">
+                            <i class="fas fa-phone text-accent"></i> +91 97419 46903
+                        </a>
+                        <!-- <a href="https://wa.me/919741946903" target="_blank" class="mb-3">
+                            <i class="fab fa-whatsapp text-accent"></i> WhatsApp Us
+                        </a> -->
+                        <a href="https://www.google.com/maps?q=Dharwad,+Karnataka" target="_blank" class="mb-3">
+                            <i class="fas fa-map-marker-alt text-accent"></i> Dharwad, Karnataka
+                        </a>
+                    </div>
+                    
+                    <div class="social-icons mt-4">
+                        <a href="https://www.facebook.com" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com" target="_blank" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                       
+                        <a href="https://wa.me/919741946903" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#home" class="d-block mb-2">Home</a>
+                        <a href="courses.html" class="d-block mb-2">Courses</a>
+                        <a href="facilities.html" class="d-block mb-2">Facilities</a>
+                        <a href="about.html" class="d-block mb-2">About</a>
+                        <a href="results.html" class="d-block mb-2">Results</a>
+                        <a href="#apply" class="d-block mb-2">Apply</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5">
+                    <h4 class="text-white mb-4">Subscribe</h4>
+                    <p class="text-white-50 mb-4">Get updates about new batches and success stories.</p>
+                    
+                    <form class="subscribe-form">
+                        <div class="row g-2">
+                            <div class="col-md-8">
+                                <input type="email" class="form-control" placeholder="Email address" required>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-apply w-100">Subscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div class="mt-4">
+                        <h5 class="text-white mb-3">Our Location</h5>
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-map-marker-alt text-accent mt-1 me-2"></i>
+                            <div>
+                                <p class="text-white-50 mb-0">
+                                    Oxford Coaching Classes<br>
+                                    Dharwad, Karnataka<br>
+                                    PIN: 580001
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom text-center pt-4">
+                © 2025 Oxford Coaching Classes — All rights reserved
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 76,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        document.querySelector('.subscribe-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing! We will keep you updated.');
+            this.reset();
+        });
+        
+        // Add animation to elements on scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.stat-box, .course-card, .testimonial-card, .event-card').forEach(el => {
+            el.classList.add('animate__animated');
+            observer.observe(el);
+        });
+    </script>
+    
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</body>
+</html>

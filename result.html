@@ -1,0 +1,843 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Results | Oxford Coaching Classes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+--primary:#8B0000;
+--secondary:#C41E3A;
+--accent:#E63946;
+--text-primary: #1a237e;      /* ADD THIS */
+--text-secondary: #0d1440;    /* ADD THIS */
+--text-accent: #FFD700;       /* ADD THIS */
+--dark:#2c3e50;
+--white:#fff;
+--shadow:0 15px 40px rgba(0,0,0,0.1);
+--radius:14px;
+--transition:0.4s ease;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Poppins;color:var(--dark);}
+html{scroll-behavior:smooth;}
+.container{max-width:1200px;margin:auto;padding:0 20px;}
+section{padding:100px 0;}
+
+/* ================= HEADER ================= */
+header{
+position:fixed;top:0;width:100%;z-index:1000;
+background:#fff;box-shadow:var(--shadow);
+}
+.navbar{
+display:flex;justify-content:space-between;align-items:center;
+padding:14px 0;
+}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo img{height:52px;}
+.logo-text{font-size:22px;font-weight:700;color:#C41E3A;}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+
+
+.nav-links{display:flex;list-style:none;align-items:center;}
+.nav-links li{margin-left:28px;}
+.nav-links a{
+text-decoration:none;color:#0d1440;font-weight:500;
+position:relative;transition:var(--transition);
+}
+.nav-links a:hover{color:var(--accent);}
+.nav-links a::after{
+content:"";position:absolute;left:0;bottom:-6px;
+width:0;height:2px;background:var(--accent);
+transition:0.3s;
+}
+.nav-links a:hover::after{width:100%;}
+
+.apply-btn{
+background:linear-gradient(135deg,var(--secondary),var(--accent));
+color:#fff!important;padding:10px 22px;border-radius:30px;
+font-weight:600;
+}
+.apply-btn::after{display:none;}
+.menu-toggle{display:none;font-size:22px;cursor:pointer;}
+
+/* ================= RESULTS HERO ================= */
+.results-hero{
+margin-top:78px;padding:0;background:linear-gradient(135deg,var(--primary),var(--accent));
+height:70vh;display:flex;align-items:center;justify-content:center;
+position:relative;overflow:hidden;
+}
+.results-hero::before{
+content:"";position:absolute;inset:0;
+background:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3');
+background-size:cover;background-position:center;opacity:0.2;
+}
+.hero-content{
+position:relative;z-index:2;text-align:center;color:#fff;padding:20px;
+}
+.hero-content h1{font-size:56px;margin-bottom:18px;text-shadow:2px 2px 4px rgba(0,0,0,0.3);}
+.hero-content p{font-size:20px;margin-bottom:28px;max-width:700px;margin-left:auto;margin-right:auto;}
+.hero-content a{
+background:#fff;padding:14px 36px;border-radius:30px;
+color:var(--accent);text-decoration:none;font-weight:600;
+transition:var(--transition);
+}
+.hero-content a:hover{
+transform:translateY(-3px);box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ================= SECTION COMMON ================= */
+.section-title{text-align:center;margin-bottom:60px;}
+.section-title h2{font-size:36px;}
+.section-title p{color:#777;margin-top:8px;}
+
+/* ================= RESULTS STATISTICS ================= */
+.results-stats{
+padding:100px 0;background:#f9f9f9;
+}
+.stats-grid{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;
+}
+.stat-box{
+background:#fff;padding:40px;border-radius:var(--radius);
+box-shadow:var(--shadow);text-align:center;position:relative;
+overflow:hidden;transition:var(--transition);
+opacity:0;transform:translateY(50px);
+}
+.stat-box.show{
+opacity:1;transform:translateY(0);
+}
+.stat-box::before{
+content:"";position:absolute;top:0;left:0;width:100%;height:5px;
+background:linear-gradient(to right,var(--accent),var(--secondary));
+}
+.stat-number{
+font-size:48px;font-weight:700;color:var(--accent);
+margin-bottom:10px;display:block;
+}
+.stat-box h3{
+font-size:22px;margin-bottom:15px;color:var(--dark);
+}
+.stat-box p{
+color:#666;line-height:1.6;
+}
+.stat-box:hover{
+transform:translateY(-10px);
+}
+
+/* ================= YEARLY RESULTS ================= */
+.yearly-results{
+padding:100px 0;
+}
+.result-tabs{
+display:flex;justify-content:center;gap:10px;
+margin-bottom:40px;flex-wrap:wrap;
+}
+.tab-btn{
+padding:12px 30px;background:#f0f0f0;border:none;
+border-radius:30px;font-weight:600;cursor:pointer;
+transition:var(--transition);
+}
+.tab-btn.active{
+background:linear-gradient(135deg,var(--secondary),var(--accent));
+color:#fff;
+}
+.result-content{
+display:none;animation:fadeIn 0.5s;
+}
+.result-content.active{
+display:block;
+}
+@keyframes fadeIn{
+from{opacity:0;}to{opacity:1;}
+}
+.result-grid{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;
+}
+.result-card{
+background:#fff;padding:30px;border-radius:var(--radius);
+box-shadow:var(--shadow);transition:var(--transition);
+opacity:0;transform:scale(0.9);
+}
+.result-card.show{
+opacity:1;transform:scale(1);
+}
+.result-card:hover{
+transform:translateY(-10px);
+}
+.result-icon{
+width:60px;height:60px;margin-bottom:20px;
+background:linear-gradient(135deg,var(--accent),var(--secondary));
+border-radius:50%;display:flex;align-items:center;
+justify-content:center;color:#fff;font-size:24px;
+}
+.result-card h3{
+font-size:20px;margin-bottom:15px;
+}
+.result-list{
+list-style:none;padding-left:0;
+}
+.result-list li{
+padding:10px 0;border-bottom:1px dashed #eee;
+color:#555;position:relative;padding-left:25px;
+}
+.result-list li::before{
+content:"✓";color:var(--accent);font-weight:bold;
+position:absolute;left:0;
+}
+
+/* ================= TOPPER PROFILES ================= */
+.topper-profiles{
+background:#f9f9f9;padding:100px 0;
+}
+.profile-grid{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;
+}
+.profile-card{
+background:#fff;border-radius:var(--radius);overflow:hidden;
+box-shadow:var(--shadow);transition:var(--transition);
+opacity:0;transform:translateY(50px);
+}
+.profile-card.show{
+opacity:1;transform:translateY(0);
+}
+.profile-card:hover{
+transform:translateY(-10px);
+}
+.profile-header{
+background:linear-gradient(135deg,var(--primary),var(--accent));
+padding:30px;text-align:center;color:#fff;
+}
+.profile-avatar{
+width:100px;height:100px;border-radius:50%;
+background:#fff;margin:0 auto 15px;display:flex;
+align-items:center;justify-content:center;font-size:40px;
+color:var(--accent);border:5px solid #fff;
+}
+.profile-header h3{
+font-size:22px;margin-bottom:5px;
+}
+.profile-header p{
+font-size:14px;opacity:0.9;
+}
+.profile-body{
+padding:25px;
+}
+.achievement{
+display:flex;align-items:center;gap:10px;
+margin-bottom:15px;color:#555;
+}
+.achievement i{
+color:var(--accent);
+}
+
+/* ================= SCHOOL-WISE RESULTS ================= */
+.school-results{
+padding:100px 0;
+}
+.school-grid{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;
+}
+.school-card{
+background:#fff;padding:30px;border-radius:var(--radius);
+box-shadow:var(--shadow);text-align:center;
+transition:var(--transition);opacity:0;transform:translateX(-50px);
+}
+.school-card.show{
+opacity:1;transform:translateX(0);
+}
+.school-card:nth-child(even){
+transform:translateX(50px);
+}
+.school-card:nth-child(even).show{
+transform:translateX(0);
+}
+.school-icon{
+font-size:42px;color:var(--accent);margin-bottom:20px;
+}
+.school-card h3{
+font-size:20px;margin-bottom:15px;
+}
+.selection-count{
+font-size:36px;font-weight:700;color:var(--accent);
+margin:15px 0;
+}
+
+/* ================= PARENT TESTIMONIALS ================= */
+.parent-testimonials{
+background:#f9f9f9;padding:100px 0;
+}
+.testimonial-container{
+max-width:800px;margin:auto;position:relative;
+}
+.testimonial-card{
+background:#fff;padding:40px;border-radius:var(--radius);
+box-shadow:var(--shadow);margin-bottom:30px;
+opacity:0;transform:translateY(40px);
+}
+.testimonial-card.show{
+opacity:1;transform:translateY(0);
+}
+.testimonial-card p{
+font-size:18px;font-style:italic;color:#555;
+line-height:1.8;margin-bottom:20px;
+}
+.testimonial-author{
+display:flex;align-items:center;gap:15px;
+}
+.author-avatar{
+width:60px;height:60px;border-radius:50%;
+background:linear-gradient(135deg,var(--accent),var(--secondary));
+display:flex;align-items:center;justify-content:center;
+color:#fff;font-size:24px;
+}
+.author-info h4{
+color:var(--dark);font-size:18px;margin-bottom:5px;
+}
+.author-info span{
+color:#666;font-size:14px;
+}
+
+/* ================= CTA SECTION ================= */
+.cta-section{
+background:linear-gradient(135deg,var(--primary),var(--accent));
+padding:100px 0;text-align:center;color:#fff;
+}
+.cta-content h2{font-size:36px;margin-bottom:20px;}
+.cta-content p{font-size:18px;margin-bottom:30px;max-width:700px;margin-left:auto;margin-right:auto;}
+.cta-btn{
+display:inline-block;background:#fff;color:var(--accent);
+padding:15px 40px;border-radius:30px;text-decoration:none;
+font-weight:600;font-size:18px;transition:var(--transition);
+}
+.cta-btn:hover{
+transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* ================= FOOTER ================= */
+.site-footer{
+background:#0b0b0b;color:#fff;
+padding:60px 20px 20px;
+}
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+}
+.footer-col h3,
+.footer-col h4{
+margin-bottom:16px;color:#fff;
+}
+.footer-col p{
+color:#ccc;font-size:14px;line-height:1.6;
+}
+.footer-contact a{
+display:flex;align-items:center;gap:10px;
+margin-top:12px;color:#ccc;text-decoration:none;
+transition:0.3s;
+}
+.footer-contact a:hover{
+color:var(--accent);transform:translateX(5px);
+}
+.footer-contact i{color:var(--accent);}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:10px;}
+.footer-col ul a{
+color:#ccc;text-decoration:none;transition:0.3s;
+}
+.footer-col ul a:hover{
+color:var(--accent);padding-left:6px;
+}
+.subscribe-form{margin-top:15px;}
+.subscribe-form input{
+width:100%;padding:12px;border-radius:6px;
+border:none;margin-bottom:10px;
+}
+.subscribe-form button{
+width:100%;padding:12px;border:none;
+border-radius:30px;
+background:linear-gradient(135deg,var(--secondary),var(--accent));
+color:#fff;font-weight:600;cursor:pointer;
+}
+.footer-bottom{
+text-align:center;margin-top:40px;padding-top:15px;
+border-top:1px solid rgba(255,255,255,0.1);
+font-size:14px;color:#aaa;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+.menu-toggle{display:block;}
+.nav-links{
+position:fixed;top:78px;left:0;width:100%;
+background:#fff;flex-direction:column;
+transform:translateY(-150%);transition:var(--transition);
+}
+.nav-links.active{transform:translateY(0);}
+.nav-links li{margin:15px 0;}
+.results-hero{height:60vh;}
+.hero-content h1{font-size:36px;}
+.hero-content p{font-size:16px;}
+.logo-text{font-size:18px;}
+.logo img{height:44px;}
+.stats-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container">
+<nav class="navbar">
+<a href="index.html" class="logo">
+<img src="logo.jpg" alt="Oxford Coaching Classes Logo" class="logo-img">
+<span class="logo-text">OXFORD COACHING CLASSES</span>
+</a>
+<div class="menu-toggle" id="menu"><i class="fas fa-bars"></i></div>
+<ul class="nav-links" id="nav">
+<li><a href="index.html">Home</a></li>
+<li><a href="courses.html">Courses</a></li>
+<li><a href="facilities.html">Facilities</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="results-hero" class="active">Results</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="index.html" class="apply-btn">Apply Now</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- RESULTS HERO -->
+<section class="results-hero" id="results-hero">
+<div class="hero-content">
+<h1>Our Success Stories</h1>
+<p>Celebrating consistent excellence and outstanding achievements of our students</p>
+<a href="index.html#apply">Join Success Journey</a>
+</div>
+</section>
+
+<!-- RESULTS STATISTICS -->
+<section class="results-stats">
+<div class="container">
+<div class="section-title">
+<h2>Results at a Glance</h2>
+<p>Consistent performance across all entrance exams</p>
+</div>
+<div class="stats-grid">
+<div class="stat-box">
+<span class="stat-number">300+</span>
+<h3>Total Selections</h3>
+<p>Students selected in Navodaya & Sainik Schools since inception</p>
+</div>
+
+<div class="stat-box">
+<span class="stat-number">95%</span>
+<h3>Success Rate</h3>
+<p>Consistent selection ratio across all batches</p>
+</div>
+
+<div class="stat-box">
+<span class="stat-number">50+</span>
+<h3>Districts Covered</h3>
+<p>Students from across Karnataka achieving success</p>
+</div>
+
+<div class="stat-box">
+<span class="stat-number">15</span>
+<h3>Years of Excellence</h3>
+<p>Proven track record in competitive exam coaching</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- YEARLY RESULTS -->
+<section class="yearly-results">
+<div class="container">
+<div class="section-title">
+<h2>Year-wise Performance</h2>
+<p>Consistent growth in selections year after year</p>
+</div>
+<div class="result-tabs">
+<button class="tab-btn active" data-year="2024">2024</button>
+<button class="tab-btn" data-year="2023">2023</button>
+<button class="tab-btn" data-year="2022">2022</button>
+<button class="tab-btn" data-year="2021">2021</button>
+</div>
+
+<div class="result-content active" id="2024">
+<div class="result-grid">
+<div class="result-card">
+<div class="result-icon">
+<i class="fas fa-school"></i>
+</div>
+<h3>Navodaya Vidyalaya</h3>
+<ul class="result-list">
+<li>18 selections in Class 6</li>
+<li>12 selections in Class 9</li>
+<li>3 state rank holders</li>
+<li>5 district toppers</li>
+</ul>
+</div>
+
+<div class="result-card">
+<div class="result-icon">
+<i class="fas fa-shield-alt"></i>
+</div>
+<h3>Sainik School</h3>
+<ul class="result-list">
+<li>15 selections in Class 6</li>
+<li>8 selections in Class 9</li>
+<li>2 all-India rank holders</li>
+<li>100% medical clearance</li>
+</ul>
+</div>
+
+<div class="result-card">
+<div class="result-icon">
+<i class="fas fa-flag"></i>
+</div>
+<h3>Rashtriya Military School</h3>
+<ul class="result-list">
+<li>8 selections in RMS</li>
+<li>All students cleared physical</li>
+<li>3 interview toppers</li>
+<li>Medical test 100% success</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="result-content" id="2023">
+<div class="result-grid">
+<div class="result-card">
+<div class="result-icon">
+<i class="fas fa-school"></i>
+</div>
+<h3>Navodaya Vidyalaya 2023</h3>
+<ul class="result-list">
+<li>22 selections in Class 6</li>
+<li>10 selections in Class 9</li>
+<li>4 state rank holders</li>
+<li>6 district toppers</li>
+</ul>
+</div>
+
+<div class="result-card">
+<div class="result-icon">
+<i class="fas fa-shield-alt"></i>
+</div>
+<h3>Sainik School 2023</h3>
+<ul class="result-list">
+<li>18 selections in Class 6</li>
+<li>7 selections in Class 9</li>
+<li>3 all-India rank holders</li>
+<li>100% medical clearance</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TOPPER PROFILES -->
+<section class="topper-profiles">
+<div class="container">
+<div class="section-title">
+<h2>Our Toppers</h2>
+<p>Inspiring stories of our high achievers</p>
+</div>
+<div class="profile-grid">
+<div class="profile-card">
+<div class="profile-header">
+<div class="profile-avatar">
+<i class="fas fa-user-graduate"></i>
+</div>
+<h3>Rohan Kumar</h3>
+<p>All India Rank 12 - Sainik School</p>
+</div>
+<div class="profile-body">
+<div class="achievement">
+<i class="fas fa-medal"></i>
+<span>AIR 12 in AISSEE 2024</span>
+</div>
+<div class="achievement">
+<i class="fas fa-school"></i>
+<span>Selected: Sainik School Bijapur</span>
+</div>
+<div class="achievement">
+<i class="fas fa-chart-line"></i>
+<span>Score: 118/125</span>
+</div>
+</div>
+</div>
+
+<div class="profile-card">
+<div class="profile-header">
+<div class="profile-avatar">
+<i class="fas fa-user-graduate"></i>
+</div>
+<h3>Priya Sharma</h3>
+<p>State Rank 3 - Navodaya Vidyalaya</p>
+</div>
+<div class="profile-body">
+<div class="achievement">
+<i class="fas fa-medal"></i>
+<span>State Rank 3 in JNVST</span>
+</div>
+<div class="achievement">
+<i class="fas fa-school"></i>
+<span>Selected: JNV Dharwad</span>
+</div>
+<div class="achievement">
+<i class="fas fa-chart-line"></i>
+<span>Score: 92%</span>
+</div>
+</div>
+</div>
+
+<div class="profile-card">
+<div class="profile-header">
+<div class="profile-avatar">
+<i class="fas fa-user-graduate"></i>
+</div>
+<h3>Amit Patel</h3>
+<p>RMS Selection with Distinction</p>
+</div>
+<div class="profile-body">
+<div class="achievement">
+<i class="fas fa-medal"></i>
+<span>Selected in RMS Bengaluru</span>
+</div>
+<div class="achievement">
+<i class="fas fa-running"></i>
+<span>Physical Test: Excellent</span>
+</div>
+<div class="achievement">
+<i class="fas fa-chart-line"></i>
+<span>Written: 85%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SCHOOL-WISE RESULTS -->
+<section class="school-results">
+<div class="container">
+<div class="section-title">
+<h2>School-wise Selections</h2>
+<p>Our students' achievements across different institutions</p>
+</div>
+<div class="school-grid">
+<div class="school-card">
+<div class="school-icon">
+<i class="fas fa-school"></i>
+</div>
+<h3>Navodaya Vidyalaya</h3>
+<div class="selection-count">180+</div>
+<p>Selections across Karnataka</p>
+</div>
+
+<div class="school-card">
+<div class="school-icon">
+<i class="fas fa-shield-alt"></i>
+</div>
+<h3>Sainik School</h3>
+<div class="selection-count">120+</div>
+<p>Selections in various states</p>
+</div>
+
+<div class="school-card">
+<div class="school-icon">
+<i class="fas fa-flag"></i>
+</div>
+<h3>Rashtriya Military School</h3>
+<div class="selection-count">45+</div>
+<p>Selections with flying colors</p>
+</div>
+
+<div class="school-card">
+<div class="school-icon">
+<i class="fas fa-university"></i>
+</div>
+<h3>Residential Schools</h3>
+<div class="selection-count">200+</div>
+<p>Kittur Rani, Morarji Desai & others</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PARENT TESTIMONIALS -->
+<section class="parent-testimonials">
+<div class="container">
+<div class="section-title">
+<h2>Parent Testimonials</h2>
+<p>What parents say about our results</p>
+</div>
+<div class="testimonial-container">
+<div class="testimonial-card">
+<p>"Oxford Coaching transformed my son's academic journey. From a shy student to a confident achiever selected in Sainik School - the transformation is remarkable. The systematic approach and regular assessments made all the difference."</p>
+<div class="testimonial-author">
+<div class="author-avatar">
+<i class="fas fa-user"></i>
+</div>
+<div class="author-info">
+<h4>Mr. Suresh Patil</h4>
+<span>Parent of Sainik School Selected Student</span>
+</div>
+</div>
+</div>
+
+<div class="testimonial-card">
+<p>"My daughter was selected in Navodaya with state rank. The mock test series and personalized attention helped her overcome exam fear. The faculty's dedication and the learning environment are truly commendable."</p>
+<div class="testimonial-author">
+<div class="author-avatar">
+<i class="fas fa-user"></i>
+</div>
+<div class="author-info">
+<h4>Mrs. Anjali Deshpande</h4>
+<span>Parent of JNV Selected Student</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+<div class="container">
+<div class="cta-content">
+<h2>Be Our Next Success Story</h2>
+<p>Join Oxford Coaching and secure your seat in prestigious residential schools.</p>
+<a href="index.html#apply" class="cta-btn">Start Your Journey</a>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+<div class="container footer-grid">
+<div class="footer-col">
+<h3>Oxford Coaching</h3>
+<p>Transforming young aspirants into confident achievers with focused coaching and mentorship.</p>
+<div class="footer-contact">
+<a href="tel:+919741946903">
+<i class="fas fa-phone"></i> +91 97419 46903
+</a>
+<a href="https://wa.me/919741946903" target="_blank">
+<i class="fab fa-whatsapp"></i> WhatsApp Us
+</a>
+<a href="https://www.google.com/maps?q=Dharwad,+Karnataka" target="_blank">
+<i class="fas fa-map-marker-alt"></i> Dharwad, Karnataka
+</a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="courses.html">Courses</a></li>
+<li><a href="facilities.html">Facilities</a></li>
+<li><a href="#results-hero">Results</a></li>
+<li><a href="index.html#apply">Apply</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Subscribe</h4>
+<p>Get updates about our results and success stories.</p>
+<form class="subscribe-form">
+<input type="email" placeholder="Email address" required>
+<button type="submit">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="footer-bottom">
+© 2025 Oxford Coaching Classes — All rights reserved
+</div>
+</footer>
+
+<script>
+// Mobile menu toggle
+const menu = document.getElementById("menu");
+const nav = document.getElementById("nav");
+menu.onclick = () => nav.classList.toggle("active");
+
+// Scroll animations
+const observerOptions = {
+threshold: 0.2,
+rootMargin: "0px 0px -50px 0px"
+};
+
+const observer = new IntersectionObserver((entries) => {
+entries.forEach((entry, index) => {
+if (entry.isIntersecting) {
+setTimeout(() => {
+entry.target.classList.add("show");
+}, index * 150);
+}
+});
+}, observerOptions);
+
+// Observe all animated elements
+document.querySelectorAll(".stat-box").forEach(el => observer.observe(el));
+document.querySelectorAll(".result-card").forEach(el => observer.observe(el));
+document.querySelectorAll(".profile-card").forEach(el => observer.observe(el));
+document.querySelectorAll(".school-card").forEach(el => observer.observe(el));
+document.querySelectorAll(".testimonial-card").forEach(el => observer.observe(el));
+
+// Tab functionality
+const tabBtns = document.querySelectorAll(".tab-btn");
+const tabContents = document.querySelectorAll(".result-content");
+
+tabBtns.forEach(btn => {
+btn.addEventListener("click", () => {
+const year = btn.getAttribute("data-year");
+tabBtns.forEach(b => b.classList.remove("active"));
+btn.classList.add("active");
+tabContents.forEach(content => {
+content.classList.remove("active");
+if(content.id === year) content.classList.add("active");
+});
+});
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if(targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if(targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+});
+});
+</script>
+</body>
+</html>
